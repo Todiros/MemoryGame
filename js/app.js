@@ -39,17 +39,58 @@ function shuffle(array) {
 
 
 $(document).ready(function() {
+    let clickedCards = [];
+    let clickedCardsType = [];
+    let matchedCards = [];
+
+    function checkMatch(card) {
+        const cardType = $( card ).children().attr('class');
+        const matched = "card match";
+
+        clickedCardsType.push(cardType);
+        clickedCards.push(card);
+
+        if (clickedCardsType.length === 2) {
+            if (clickedCardsType[0] === clickedCardsType[1]) {
+
+                for (card of clickedCards){
+                    setCardState(card, matched);
+                }
+
+                clickedCards.every(x => matchedCards.push(x)); 
+                clickedCardsType = [];
+                clickedCards = [];
+            } else {
+                hideCards(clickedCards);
+                clickedCardsType = [];
+                clickedCards = [];
+            }
+        }
+            
+    }
+
     function showCard(card) {
         const show = "card open show";
 
         $(card).attr('class', show);
     }
+
+    function hideCards(cards) {
+        const hide = "card";
+
+        for (let card of cards) {
+            $(card).attr('class', hide);
+        }
+    }
+
+    function setCardState(card, state) {
+        $(card).attr('class', state);
+    }
     
     $('ul').on('mousedown', 'li', function(){
         showCard(this);
     }).on('mouseup', 'li', function(){
-        // TODO
-        // checkMatch(this);
+        checkMatch(this);
     });
 });
 
