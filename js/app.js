@@ -57,6 +57,7 @@ $(document).ready(function() {
         if (clickedCardsType.length === 2) {
             moves++;
             setMoves(moves);
+            alterStars(moves);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
@@ -106,6 +107,21 @@ $(document).ready(function() {
         matchedCards = [];
         clickedCards = [];
         clickedCardsType = [];
+    }
+
+    // 0 - 6
+    // 7 - 13
+    // 14 - 21
+    function alterStars(moves) {
+        const lightStar = "far fa-star";
+
+        if ((moves >= 7) && (moves < 14)) {
+            $(stars[2]).attr("class", lightStar);
+        } else if ((moves >= 14) && (moves < 21)) {
+            $(stars[1]).attr("class", lightStar);
+        } else if (moves >= 21) {
+            $(stars[0]).attr("class", lightStar);
+        }
     }
 
     $(".restart").click(() => {
