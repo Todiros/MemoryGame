@@ -41,6 +41,7 @@ function shuffle(array) {
 
 $(document).ready(function() {
     // Get stars and their classes
+    let moves = 0;
     let stars = $(".stars").children().children();
     let clickedCards = [];
     let clickedCardsType = [];
@@ -54,6 +55,9 @@ $(document).ready(function() {
         clickedCards.push(card);
 
         if (clickedCardsType.length === 2) {
+            moves++;
+            $(".moves").html(moves);
+
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
                 for (card of clickedCards){
