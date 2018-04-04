@@ -80,7 +80,15 @@ $(document).ready(function() {
         $(".moves").html(moves);
     }
 
-    
+    function restartGame() {
+        moves = 0;
+        setMoves(moves);
+        
+        hideCards(matchedCards);
+        matchedCards = [];
+        clickedCards = [];
+        clickedCardsType = [];
+    }
 
     function showCard(card) {
         const show = "card open show";
@@ -99,6 +107,10 @@ $(document).ready(function() {
     function setCardState(card, state) {
         $(card).attr('class', state);
     }
+
+    $(".restart").click(function(){
+        restartGame();
+    });
     
     $('ul').on('mousedown', 'li', function(){
         showCard(this);
