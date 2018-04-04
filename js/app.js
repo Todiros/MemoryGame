@@ -58,6 +58,7 @@ $(document).ready(function() {
             moves++;
             setMoves(moves);
             alterStars(moves);
+            checkIfGameOver(moves);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
@@ -129,6 +130,14 @@ $(document).ready(function() {
                 $(star).attr("class", solidStar);
             });
         } 
+    }
+
+    function checkIfGameOver(moves) {
+        if (moves >= 21) {
+            // TODO: change to modal 
+            alert("Game Over!");
+            restartGame();
+        }
     }
 
     $(".restart").click(() => {
