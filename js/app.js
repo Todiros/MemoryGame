@@ -80,16 +80,6 @@ $(document).ready(function() {
         $(".moves").html(moves);
     }
 
-    function restartGame() {
-        moves = 0;
-        setMoves(moves);
-        
-        hideCards(matchedCards);
-        matchedCards = [];
-        clickedCards = [];
-        clickedCardsType = [];
-    }
-
     function showCard(card) {
         const show = "card open show";
 
@@ -108,13 +98,23 @@ $(document).ready(function() {
         $(card).attr('class', state);
     }
 
-    $(".restart").click(function(){
+    function restartGame() {
+        moves = 0;
+        setMoves(moves);
+        
+        hideCards(matchedCards);
+        matchedCards = [];
+        clickedCards = [];
+        clickedCardsType = [];
+    }
+
+    $(".restart").click(() => {
         restartGame();
     });
     
-    $('ul').on('mousedown', 'li', function(){
+    $('ul').on('mousedown', 'li', function() {
         showCard(this);
-    }).on('mouseup', 'li', function(){
+    }).on('mouseup', 'li', function() {
         checkMatch(this);
     });
 });
