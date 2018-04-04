@@ -1,3 +1,4 @@
+'use strict';
 /*
  * Create a list that holds all of your cards
  */
@@ -39,6 +40,8 @@ function shuffle(array) {
 
 
 $(document).ready(function() {
+    // Get stars and their classes
+    let stars = $(".stars").children().children();
     let clickedCards = [];
     let clickedCardsType = [];
     let matchedCards = [];
