@@ -56,7 +56,7 @@ $(document).ready(function() {
 
         if (clickedCardsType.length === 2) {
             moves++;
-            $(".moves").html(moves);
+            setMoves(moves);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
@@ -75,6 +75,12 @@ $(document).ready(function() {
         }
             
     }
+
+    function setMoves(moves) {
+        $(".moves").html(moves);
+    }
+
+    
 
     function showCard(card) {
         const show = "card open show";
