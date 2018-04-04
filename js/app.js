@@ -59,6 +59,7 @@ $(document).ready(function() {
             setMoves(moves);
             alterStars(moves);
             checkIfGameOver(moves);
+            checkIfWon(moves);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
@@ -136,6 +137,15 @@ $(document).ready(function() {
         if (moves >= 21) {
             // TODO: change to modal 
             alert("Game Over!");
+            restartGame();
+        }
+    }
+
+    function checkIfWon(moves) {
+        console.log(matchedCards.length);
+        if (matchedCards.length === 14) {
+            // TODO: change to modal 
+            alert(`Congrats! You won. It took you ${moves} moves.`);
             restartGame();
         }
     }
