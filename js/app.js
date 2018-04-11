@@ -48,13 +48,23 @@ $(document).ready(function() {
     let clickedCardsType = [];
     let matchedCards = [];
     
-
-    let startTimer = (function startT() {
+    function startTimer(timer) {
         timer.start();
         $(timer).on('secondsUpdated', function(e){
             $(".clock").html(timer.getTimeValues().toString(['minutes', 'seconds']));
+
+            if (timer.getTimeValues().toString(['seconds']) >= '10') {
+                $(".clock").fadeOut(1000);
+            } else {
+                $(".clock").fadeIn(500);
+            }
         })
-    })();
+    };
+
+    function stopTimer(timer) {
+        timer.stop();
+        $(".clock").html("00:00");
+    }
 
     function checkMatch(card) {
         const cardType = $( card ).children().attr('class');
@@ -84,6 +94,8 @@ $(document).ready(function() {
                 clickedCardsType = [];
                 clickedCards = [];
             }
+        } else if (clickedCardsType.length <= 1) {
+            startTimer(timer);
         }
             
     }
@@ -120,6 +132,8 @@ $(document).ready(function() {
         matchedCards = [];
         clickedCards = [];
         clickedCardsType = [];
+
+        stopTimer(timer);
     }
 
     function alterStars(moves) {
