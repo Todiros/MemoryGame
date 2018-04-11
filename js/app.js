@@ -41,11 +41,20 @@ function shuffle(array) {
 
 $(document).ready(function() {
     // Get stars and their classes
+    let timer = new Timer();
     let moves = 0;
     let stars = $(".stars").children().children();
     let clickedCards = [];
     let clickedCardsType = [];
     let matchedCards = [];
+    
+
+    let startTimer = (function startT() {
+        timer.start();
+        $(timer).on('secondsUpdated', function(e){
+            $(".clock").html(timer.getTimeValues().toString(['minutes', 'seconds']));
+        })
+    })();
 
     function checkMatch(card) {
         const cardType = $( card ).children().attr('class');
