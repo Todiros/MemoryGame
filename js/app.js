@@ -48,15 +48,32 @@ $(document).ready(function() {
     let clickedCardsType = [];
     let matchedCards = [];
     
+
+    function clockHide(clock) {
+        $(clock).fadeOut(1000);
+    }
+    function clockShow(clock) {
+        $(clock).fadeIn(500);
+    }
+
+    $(".score-panel").hover(function() {
+        let clock = $(".clock");
+        clockShow(clock)
+    }, function() {
+        let clock = $(".clock");
+        clockHide(clock)
+    });
+
     function startTimer(timer) {
         timer.start();
         $(timer).on('secondsUpdated', function(e){
-            $(".clock").html(timer.getTimeValues().toString(['minutes', 'seconds']));
+            let clock = $(".clock");
+            $(clock).html(timer.getTimeValues().toString(['minutes', 'seconds']));
 
             if (timer.getTimeValues().toString(['seconds']) >= '10') {
-                $(".clock").fadeOut(1000);
+                clockHide(clock);
             } else {
-                $(".clock").fadeIn(500);
+                clockShow(clock);
             }
         })
     };
@@ -65,6 +82,8 @@ $(document).ready(function() {
         timer.stop();
         $(".clock").html("00:00");
     }
+
+    
 
     function checkMatch(card) {
         const cardType = $( card ).children().attr('class');
