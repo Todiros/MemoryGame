@@ -179,6 +179,7 @@ $(document).ready(function() {
             const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves.`;
             
             showModal(gameOverText);
+            time.pause();
         }
     }
 
@@ -188,6 +189,7 @@ $(document).ready(function() {
             const gameWonText = `Congrats! You won. It took you ${moves} moves and ${minutes} minutes.`;
             
             showModal(gameWonText);
+            time.pause();
         }
     }
 
