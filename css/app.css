@@ -119,3 +119,54 @@ h1 {
 .clearFix {
     clear: both;
 }
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(234,234,234);
+    background-color: rgba(234,234,234,0.95);
+}
+
+.modal-content {
+    margin: 200px 0 0;
+    text-align: center;
+}
+
+.endgame-message {
+    display: none;
+}
+
+.btn-modal, .btn-exit {
+    height: 30px;
+    width: 110px;
+    background: inherit;
+    color: rgb(100,130,170);
+    border: 1px solid rgb(100,130,170);
+    border-radius: 5px;
+    font-family: inherit;
+}
+.btn-modal:hover, .btn-exit:hover {
+    background: rgb(100,130,170);
+    color: rgb(234,234,234);
+    border: 1px solid rgb(100,130,170);
+}
+
+.btn-modal:focus, .btn-exit {
+    outline: none;
+}
+
+.btn-exit {
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    border: none;
+    border-radius: 40px;
+    float: right;
+}

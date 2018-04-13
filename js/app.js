@@ -48,7 +48,6 @@ $(document).ready(function() {
     let clickedCardsType = [];
     let matchedCards = [];
     
-
     function clockHide(clock) {
         $(clock).fadeOut(1000);
     }
@@ -58,10 +57,10 @@ $(document).ready(function() {
 
     $(".score-panel").hover(function() {
         let clock = $(".clock");
-        clockShow(clock)
+        clockShow(clock);
     }, function() {
         let clock = $(".clock");
-        clockHide(clock)
+        clockHide(clock);
     });
 
     function startTimer(timer) {
@@ -83,8 +82,6 @@ $(document).ready(function() {
         $(".clock").html("00:00");
     }
 
-    
-
     function checkMatch(card) {
         const cardType = $( card ).children().attr('class');
         const matched = "card match";
@@ -97,7 +94,7 @@ $(document).ready(function() {
             setMoves(moves);
             alterStars(moves);
             checkIfGameOver(moves);
-            checkIfWon(moves);
+            checkIfWon(moves, timer);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
 
@@ -110,6 +107,7 @@ $(document).ready(function() {
                 clickedCards = [];
             } else {
                 hideCards(clickedCards);
+
                 clickedCardsType = [];
                 clickedCards = [];
             }
@@ -148,6 +146,7 @@ $(document).ready(function() {
         
         hideCards(matchedCards);
         hideCards(clickedCards);
+
         matchedCards = [];
         clickedCards = [];
         clickedCardsType = [];
@@ -177,22 +176,35 @@ $(document).ready(function() {
 
     function checkIfGameOver(moves) {
         if (moves >= 21) {
-            // TODO: change to modal 
-            alert("Game Over!");
-            restartGame();
+            const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves.`;
+            
+            showModal(gameOverText);
         }
     }
 
-    function checkIfWon(moves) {
-        console.log(matchedCards.length);
+    function checkIfWon(moves, time) {
         if (matchedCards.length === 14) {
-            // TODO: change to modal 
-            alert(`Congrats! You won. It took you ${moves} moves.`);
-            restartGame();
+            const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
+            const gameWonText = `Congrats! You won. It took you ${moves} moves and ${minutes} minutes.`;
+            
+            showModal(gameWonText);
         }
     }
 
-    $(".restart").click(() => {
+    function showModal(msg) {
+        $(".modal").show();
+        
+        $(".endgame-message").html(msg);
+        $(".endgame-message").show();
+    }
+
+    $(".btn-exit").click(() => {
+        $(".modal").hide();
+    });
+
+    $(".restart, .btn-modal").click(() => {
+        $(".modal").hide();
+
         restartGame();
     });
     
