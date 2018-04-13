@@ -83,6 +83,7 @@ $(document).ready(function() {
     }
 
     function checkMatch(card) {
+        $(card).css("pointer-events", "none");
         const cardType = $( card ).children().attr('class');
         const matched = "card match";
 
@@ -108,6 +109,8 @@ $(document).ready(function() {
             } else {
                 hideCards(clickedCards);
 
+                resetClick(clickedCards);
+
                 clickedCardsType = [];
                 clickedCards = [];
             }
@@ -115,6 +118,10 @@ $(document).ready(function() {
             startTimer(timer);
         }
             
+    }
+
+    function resetClick(cards){
+        cards.every(x => $(x).css("pointer-events", "auto")); 
     }
 
     function setMoves(moves) {
@@ -146,6 +153,7 @@ $(document).ready(function() {
         
         hideCards(matchedCards);
         hideCards(clickedCards);
+        resetClick(matchedCards);
 
         matchedCards = [];
         clickedCards = [];
