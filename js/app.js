@@ -184,7 +184,7 @@ $(document).ready(function() {
 
     function checkIfGameOver(moves, time) {
         if (moves >= 18) {
-            const minutes = time.getTimeValues().toString(['minutes']);
+            const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
             const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves. It took you ${minutes} minutes to lose.`;
             
             showModal(gameOverText);
@@ -194,7 +194,7 @@ $(document).ready(function() {
 
     function checkIfWon(moves, time) {
         if (matchedCards.length === 14) {
-            const minutes = time.getTimeValues().toString(['minutes']);
+            const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
             const gameWonText = `Congrats! You won. It took you ${moves} moves and ${minutes} minutes.`;
             
             showModal(gameWonText);
