@@ -94,7 +94,7 @@ $(document).ready(function() {
             moves++;
             setMoves(moves);
             alterStars(moves);
-            checkIfGameOver(moves);
+            checkIfGameOver(moves, timer);
             checkIfWon(moves, timer);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
@@ -166,12 +166,12 @@ $(document).ready(function() {
         const lightStar = "far fa-star";
         const solidStar = "fas fa-star";
 
-        if ((moves >= 7) && (moves < 14)) {
+        if ((moves >= 6) && (moves < 12)) {
             $(stars[2]).attr("class", lightStar);
-        } else if ((moves >= 14) && (moves < 21)) {
+        } else if ((moves >= 12) && (moves < 18)) {
             $(stars[1]).attr("class", lightStar);
             $(stars[2]).attr("class", lightStar);
-        } else if (moves >= 21) {
+        } else if (moves >= 18) {
             $(stars[0]).attr("class", lightStar);
             $(stars[1]).attr("class", lightStar);
             $(stars[2]).attr("class", lightStar);
@@ -182,9 +182,10 @@ $(document).ready(function() {
         } 
     }
 
-    function checkIfGameOver(moves) {
-        if (moves >= 21) {
-            const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves.`;
+    function checkIfGameOver(moves, time) {
+        if (moves >= 18) {
+            const minutes = time.getTimeValues().toString(['minutes']);
+            const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves. It took you ${minutes} minutes to lose.`;
             
             showModal(gameOverText);
             time.pause();
@@ -193,7 +194,7 @@ $(document).ready(function() {
 
     function checkIfWon(moves, time) {
         if (matchedCards.length === 14) {
-            const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
+            const minutes = time.getTimeValues().toString(['minutes']);
             const gameWonText = `Congrats! You won. It took you ${moves} moves and ${minutes} minutes.`;
             
             showModal(gameWonText);
