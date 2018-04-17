@@ -47,6 +47,8 @@ $(document).ready(function() {
     let clickedCards = [];
     let clickedCardsType = [];
     let matchedCards = [];
+
+    shuffleDeck();
     
     function clockHide(clock) {
         $(clock).fadeOut(1000);
@@ -80,6 +82,17 @@ $(document).ready(function() {
     function stopTimer(timer) {
         timer.stop();
         $(".clock").html("00:00");
+    }
+
+    
+    function shuffleDeck() {
+        const deckEl = $(".deck");
+        const deck = $(deckEl).children();
+
+        const newDeck = shuffle(deck);
+
+        $(deckEl).empty();
+        $(deckEl).append(newDeck);
     }
 
     function checkMatch(card) {
@@ -160,6 +173,7 @@ $(document).ready(function() {
         clickedCardsType = [];
 
         stopTimer(timer);
+        shuffleDeck();
     }
 
     function alterStars(moves) {
