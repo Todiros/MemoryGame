@@ -217,9 +217,13 @@ $(document).ready(function() {
     }
 
     function showModal(msg) {
+        let stars = $(".movesWrap .stars").clone();
+
         $(".modal").show();
-        
+
+        $(".endgame-stars").html(stars);
         $(".endgame-message").html(msg);
+
         $(".endgame-message").show();
     }
 

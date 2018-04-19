@@ -91,14 +91,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars, .movesWrap {
+.stars, .movesWrap {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars, .score-panel .movesWrap, .clock {
+.stars, .movesWrap, .clock {
     float: left;
 }
 
@@ -106,7 +106,7 @@ h1 {
     margin-left: 70px;
 }
 
-.score-panel .stars li {
+.stars li {
     list-style: none;
     display: inline-block;
 }
@@ -169,6 +169,10 @@ h1 {
     border: none;
     border-radius: 40px;
     float: right;
+}
+
+.endgame-stars .stars {
+    float: none;
 }
 
 @media screen and (max-width: 950px) {
