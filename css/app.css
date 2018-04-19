@@ -170,3 +170,26 @@ h1 {
     border-radius: 40px;
     float: right;
 }
+
+@media screen and (max-width: 950px) {
+    .deck {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        width: 90vw;
+        min-height: auto;
+    }
+
+    .deck .card {
+        width: 80%;
+        height: 80%;
+    }
+
+    .deck .card.show {
+        font-size: 1.5rem;
+    }
+    
+    .deck .card.match {
+        font-size: 1.5rem;
+    }
+}
