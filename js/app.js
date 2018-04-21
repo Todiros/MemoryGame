@@ -120,9 +120,10 @@ $(document).ready(function() {
                 clickedCardsType = [];
                 clickedCards = [];
             } else {
-                hideCards(clickedCards);
-
                 resetClick(clickedCards);
+
+                // hideCards(clickedCards);
+                setTimeout(hideCards, 500, clickedCards);
 
                 clickedCardsType = [];
                 clickedCards = [];
