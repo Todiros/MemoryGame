@@ -4,7 +4,6 @@
 #### Project part of [Udacity's FEND](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001). 
 
 ## How To Play  
----
 
 The player has a board with 8 pairs of cards, for a total of 16 randomly ordered cards. The goal of the game is to match each pair with less than 19 attempts (moves). The stars represent the remaining moves. Each star equals 6 moves. When you run out of stars (moves) before matching every pair, the game is over and you lose. If you match all of the 8 pairs, you win. 
 
@@ -15,12 +14,10 @@ Once the game is over, regardless of whether you win or lose, a modal will appea
 Above the board on the right you will also see an arrow. This is a restart button that will refresh the board, timer and moves, and reorder the cards.      
 
 ## Dependencies 
----
 
 It uses [Easy Timer](https://albert-gonzalez.github.io/easytimer.js/) for the elapsed game time. 
 
 ## Credits
----
 
 * Design: [**Udacity**](https://eu.udacity.com/)
 * Behviour (script): [**Me (Anthony D. Borr)**](http://todiros.github.io/adb/)
