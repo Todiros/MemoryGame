@@ -107,7 +107,6 @@ $(document).ready(function() {
             moves++;
             setMoves(moves);
             alterStars(moves);
-            checkIfGameOver(moves, timer);
             checkIfWon(moves, timer);
 
             if (clickedCardsType[0] === clickedCardsType[1]) {
@@ -180,13 +179,9 @@ $(document).ready(function() {
         const lightStar = "far fa-star";
         const solidStar = "fas fa-star";
 
-        if ((moves >= 7) && (moves <= 14)) {
+        if ((moves >= 17) && (moves <= 24)) {
             $(stars[2]).attr("class", lightStar);
-        } else if ((moves >= 14) && (moves <= 21)) {
-            $(stars[1]).attr("class", lightStar);
-            $(stars[2]).attr("class", lightStar);
-        } else if (moves > 21) {
-            $(stars[0]).attr("class", lightStar);
+        } else if (moves >= 31) {
             $(stars[1]).attr("class", lightStar);
             $(stars[2]).attr("class", lightStar);
         } else {
@@ -196,23 +191,11 @@ $(document).ready(function() {
         } 
     }
 
-    function checkIfGameOver(moves, time) {
-        if (moves > 21) {
-            const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
-            const gameOverText = `Game Over! :( You ran out of moves with ${moves} moves. It took you ${minutes} minutes to lose.`;
-            
-            $('.endgame-stars').hide();
-            showModal(gameOverText);
-            time.pause();
-        }
-    }
-
     function checkIfWon(moves, time) {
-        if ((matchedCards.length === 14) && (moves <= 21)) {
+        if (matchedCards.length === 14) {
             const minutes = time.getTimeValues().toString(['minutes', 'seconds']);
             const gameWonText = `Congrats! You won. It took you ${moves} moves and ${minutes} minutes.`;
             
-            $('.endgame-stars').show();
             showModal(gameWonText);
             time.pause();
         }
